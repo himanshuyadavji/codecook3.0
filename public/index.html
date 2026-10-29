@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeCook: find, understand and fix code vulnerabilities</title>
+  <meta name="description" content="Paste code or upload a file. CodeCook finds common security vulnerabilities, explains the risk in plain language and shows a safer fix.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip" href="#code">Skip to code input</a>
+  <header class="top">
+    <div class="wrap top-inner">
+      <p class="brand">CodeCook</p>
+      <p class="tag">Find the vulnerability. Understand the risk. Fix it before deployment.</p>
+    </div>
+  </header>
+
+  <main class="wrap layout">
+    <section class="panel input" aria-labelledby="in-h">
+      <h1 id="in-h">Scan your code</h1>
+      <p class="hint">Paste code or drop a file. Your code is analysed as text and never run. Supported: JavaScript, TypeScript and Python.</p>
+
+      <div class="toolbar">
+        <label class="field">Language
+          <select id="language">
+            <option value="auto">Detect automatically</option>
+            <option value="javascript">JavaScript / TypeScript</option>
+            <option value="python">Python</option>
+          </select>
+        </label>
+        <label class="field">Example
+          <select id="sample"><option value="">Choose an example…</option></select>
+        </label>
+        <label class="btn ghost file-btn">Upload file
+          <input id="file" type="file" accept=".js,.jsx,.mjs,.cjs,.ts,.tsx,.py">
+        </label>
+      </div>
+
+      <label class="field grow" for="filename">File name (optional)
+        <input id="filename" type="text" maxlength="120" placeholder="app.py" autocomplete="off">
+      </label>
+
+      <label class="sr" for="code">Source code</label>
+      <textarea id="code" spellcheck="false" placeholder="Paste your code here, or drop a .js, .ts or .py file onto this box."></textarea>
+
+      <div class="actions">
+        <button id="scan" class="btn primary" type="button">Scan code</button>
+        <button id="clear" class="btn ghost" type="button">Clear</button>
+        <label class="check"><input id="save" type="checkbox"> Save results to history (code is not stored)</label>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel results" id="results" aria-labelledby="res-h" hidden>
+      <div class="res-head">
+        <h2 id="res-h">Scan report</h2>
+        <button id="download" class="btn ghost" type="button">Download JSON report</button>
+      </div>
+      <p id="meta" class="hint"></p>
+      <div id="bar" class="bar" aria-hidden="true"></div>
+      <div id="counts" class="counts" role="group" aria-label="Filter findings by severity"></div>
+      <div class="filters">
+        <label class="field">Detection type
+          <select id="conf">
+            <option value="all">All findings</option>
+            <option value="confirmed">Confirmed pattern matches</option>
+            <option value="potential">Potential, needs review</option>
+          </select>
+        </label>
+        <p id="shown" class="hint"></p>
+      </div>
+      <div id="list" class="list"></div>
+      <p id="disclaimer" class="disclaimer"></p>
+    </section>
+
+    <aside class="panel history" aria-labelledby="hist-h">
+      <div class="res-head">
+        <h2 id="hist-h">Saved scans</h2>
+        <button id="clear-history" class="btn ghost small" type="button">Delete all</button>
+      </div>
+      <p class="hint">Stored on this server under an anonymous ID kept in your browser. Only findings are saved, never your code.</p>
+      <ul id="history" class="hist-list"></ul>
+    </aside>
+  </main>
+
+  <footer class="wrap foot">
+    <p>CodeCook uses fixed security rules. "Confirmed" means a dangerous pattern was matched, not that it can be exploited. A clean scan does not prove code is secure.</p>
+  </footer>
+
+  <script src="/samples.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

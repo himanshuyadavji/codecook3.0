@@ -1,0 +1,13 @@
+{
+  "name": "codecook",
+  "version": "1.0.0",
+  "description": "CodeCook: rule-based code security scanner with beginner-friendly explanations and secure fix suggestions.",
+  "private": true,
+  "license": "MIT",
+  "main": "server.js",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  }
+}
